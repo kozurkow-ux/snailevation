@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNAILER Alduo Rooftop Tent — Product Page Mockup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* ── Layout ── */
+  .page-wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  .div { border-top: 0.5px solid #e8e8e8; }
+  .sec { padding: 36px 0; }
+  .lbl { font-size: 10px; letter-spacing: .1em; font-weight: 600; text-transform: uppercase; color: #888; margin-bottom: 5px; }
+  .sec-h { font-size: 18px; font-weight: 500; letter-spacing: -.01em; margin-bottom: 4px; }
+  .sec-sub { font-size: 13px; color: #888; margin-bottom: 20px; }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: #1a1a1a; color: #fff;
+    font-size: 11px; text-align: center;
+    padding: 10px 24px; letter-spacing: .04em;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .top-bar b { font-weight: 600; }
+  .top-bar span { opacity: .65; }
+
+  /* ── Nav (simplified) ── */
+  .nav {
+    border-bottom: 0.5px solid #e8e8e8;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: .05em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo img { height: 28px; }
+  .nav-links { display: flex; gap: 24px; font-size: 12px; font-weight: 500; letter-spacing: .03em; }
+  .nav-links a { text-decoration: none; color: #1a1a1a; opacity: .7; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a.active { opacity: 1; font-weight: 600; }
+  .nav-right { display: flex; align-items: center; gap: 16px; font-size: 12px; }
+  .nav-cart { display: flex; align-items: center; gap: 6px; font-weight: 600; cursor: pointer; }
+
+  /* ── Breadcrumb ── */
+  .bc-row { padding: 14px 0 8px; font-size: 11px; color: #aaa; display: flex; gap: 5px; align-items: center; }
+  .bc-sep { color: #ddd; }
+  .bc-row a { color: #aaa; text-decoration: none; }
+  .bc-row a:hover { color: #1a1a1a; }
+
+  /* ── Page tag ── */
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #1a1a1a; color: #fff;
+    font-size: 10px; font-weight: 600; letter-spacing: .09em;
+    padding: 5px 12px; margin-bottom: 18px;
+  }
+
+  /* ── Hero ── */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 32px; }
+
+  .gal { display: flex; flex-direction: column; gap: 7px; }
+  .gal-main {
+    aspect-ratio: 4/3; background: #f2f2f2; overflow: hidden;
+    border: 0.5px solid #e0e0e0; cursor: zoom-in;
+  }
+  .gal-main img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+  .gal-main:hover img { transform: scale(1.03); }
+  .gal-thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+  .gal-t { aspect-ratio: 1; overflow: hidden; border: 0.5px solid #e0e0e0; cursor: pointer; opacity: .5; transition: opacity .15s; }
+  .gal-t:hover { opacity: .8; }
+  .gal-t.on { border: 1px solid #1a1a1a; opacity: 1; }
+  .gal-t img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .info { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+  .cat-lbl { font-size: 10px; letter-spacing: .1em; color: #888; font-weight: 600; text-transform: uppercase; }
+  .prod-name { font-size: 22px; font-weight: 500; line-height: 1.25; letter-spacing: -.015em; }
+
+  .rat-row {
+    display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-top: 0.5px solid #eee; border-bottom: 0.5px solid #eee; padding: 8px 0;
+  }
+  .stars { letter-spacing: 1px; font-size: 14px; color: #1a1a1a; }
+  .rat-score { font-weight: 500; font-size: 13px; }
+  .rat-ct { color: #888; text-decoration: underline; cursor: pointer; font-size: 12px; }
+  .rat-ct:hover { color: #1a1a1a; }
+
+  .pr-block { display: flex; flex-direction: column; gap: 5px; }
+  .pr-row { display: flex; align-items: baseline; gap: 10px; }
+  .pr-now { font-size: 30px; font-weight: 500; letter-spacing: -.02em; }
+  .pr-was { font-size: 15px; color: #bbb; text-decoration: line-through; }
+  .pr-save {
+    font-size: 11px; background: #fff0f0; color: #c0392b;
+    padding: 3px 9px; border: 0.5px solid #f5c6c6; font-weight: 600;
+  }
+  .wrnty-line { font-size: 11px; color: #888; display: flex; align-items: center; gap: 5px; }
+  .wrnty-line i { font-size: 14px; color: #1a1a1a; }
+
+  .val-note {
+    font-size: 12px; color: #888; padding-left: 10px;
+    border-left: 2px solid #1a1a1a; line-height: 1.6;
+  }
+
+  .chips-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    font-size: 11px; border: 0.5px solid #d0d0d0;
+    padding: 4px 11px; letter-spacing: .02em; cursor: default;
+  }
+
+  .trust-grid { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid #e0e0e0; }
+  .tr-cell {
+    padding: 11px 12px; border-right: 0.5px solid #e0e0e0;
+    border-bottom: 0.5px solid #e0e0e0; display: flex; gap: 9px; align-items: flex-start;
+  }
+  .tr-cell:nth-child(2n) { border-right: none; }
+  .tr-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .tr-cell i { font-size: 16px; color: #1a1a1a; flex-shrink: 0; margin-top: 1px; }
+  .tr-t { font-size: 11px; font-weight: 600; display: block; margin-bottom: 2px; letter-spacing: .02em; }
+  .tr-s { font-size: 10px; color: #888; line-height: 1.4; }
+
+  .cta-main {
+    width: 100%; padding: 14px; background: #1a1a1a; color: #fff;
+    font-size: 14px; font-weight: 500; border: none; cursor: pointer;
+    letter-spacing: .04em; transition: background .15s;
+  }
+  .cta-main:hover { background: #333; }
+  .cta-sec {
+    width: 100%; padding: 10px; background: #fff; color: #1a1a1a;
+    font-size: 12px; border: 0.5px solid #ccc; cursor: pointer;
+    margin-top: 6px; letter-spacing: .03em; transition: background .15s;
+  }
+  .cta-sec:hover { background: #f8f8f8; }
+
+  .del-row { font-size: 11px; color: #888; display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .del-row i { font-size: 14px; color: #1a1a1a; }
+
+  .compat-box {
+    font-size: 11px; color: #888; padding: 10px 12px;
+    border: 0.5px solid #e0e0e0; display: flex; gap: 8px; align-items: flex-start;
+  }
+  .compat-box i { font-size: 14px; color: #1a1a1a; flex-shrink: 0; margin-top: 1px; }
+  .compat-box a { color: #1a1a1a; text-decoration: underline; cursor: pointer; }
+  .compat-box a:hover { opacity: .7; }
+
+  /* ── In action strip ── */
+  .action-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .action-item { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #f2f2f2; border: 0.5px solid #e0e0e0; }
+  .action-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .action-item:hover img { transform: scale(1.04); }
+  .action-loc {
+    position: absolute; bottom: 7px; left: 7px;
+    background: #fff; color: #1a1a1a;
+    font-size: 9px; font-weight: 600; letter-spacing: .07em;
+    padding: 3px 8px; text-transform: uppercase;
+  }
+  .action-more {
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 7px;
+    background: #f5f5f5; cursor: pointer; border: 0.5px solid #e0e0e0;
+    transition: background .15s;
+  }
+  .action-more:hover { background: #ececec; }
+  .action-more i { font-size: 24px; color: #aaa; }
+  .action-more span { font-size: 10px; color: #888; text-decoration: underline; letter-spacing: .05em; text-transform: uppercase; }
+
+  /* ── Feature tiles ── */
+  .feat-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .ftile { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #f2f2f2; cursor: pointer; }
+  .ftile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .ftile:hover img { transform: scale(1.04); }
+  .ftile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 18px;
+  }
+  .ftile-tag { font-size: 10px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.7); text-transform: uppercase; margin-bottom: 5px; }
+  .ftile-title { font-size: 14px; font-weight: 500; color: #fff; line-height: 1.3; }
+
+  /* ── Materials ── */
+  .mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 0.5px solid #e0e0e0; }
+  .mat-cell { border-right: 0.5px solid #e0e0e0; overflow: hidden; }
+  .mat-cell:last-child { border-right: none; }
+  .mat-img { aspect-ratio: 4/3; overflow: hidden; background: #f2f2f2; border-bottom: 0.5px solid #e0e0e0; }
+  .mat-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .mat-cell:hover .mat-img img { transform: scale(1.04); }
+  .mat-body { padding: 14px 16px; }
+  .mat-name { font-size: 12px; font-weight: 600; letter-spacing: .03em; margin-bottom: 5px; }
+  .mat-desc { font-size: 11px; color: #888; line-height: 1.65; }
+
+  /* ── Pillars ── */
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); border: 0.5px solid #e0e0e0; }
+  .pil { padding: 18px 14px; border-right: 0.5px solid #e0e0e0; }
+  .pil:last-child { border-right: none; }
+  .pil i { font-size: 20px; color: #1a1a1a; display: block; margin-bottom: 11px; }
+  .pil-t { font-size: 12px; font-weight: 600; letter-spacing: .02em; margin-bottom: 3px; }
+  .pil-s { font-size: 11px; color: #888; line-height: 1.5; }
+
+  /* ── First tent split ── */
+  .first-tent { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 0.5px solid #e0e0e0; margin-top: 6px; }
+  .ft-video {
+    background: #1a1a1a; display: flex; align-items: center;
+    justify-content: center; flex-direction: column; gap: 12px;
+    padding: 36px; cursor: pointer; min-height: 180px; transition: background .15s;
+  }
+  .ft-video:hover { background: #2a2a2a; }
+  .ft-video i { font-size: 40px; color: #fff; opacity: .8; }
+  .ft-video span { font-size: 10px; color: rgba(255,255,255,.55); letter-spacing: .07em; text-transform: uppercase; }
+  .ft-text { padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .ft-text p { font-size: 12px; color: #888; line-height: 1.75; }
+  .ft-link { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-decoration: underline; cursor: pointer; text-transform: uppercase; }
+  .ft-link:hover { opacity: .6; }
+
+  /* ── Feature alternating ── */
+  .feat-alt { display: flex; flex-direction: column; }
+  .feat-row {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 24px; align-items: center;
+    padding: 24px 0; border-bottom: 0.5px solid #eee;
+  }
+  .feat-row:last-child { border-bottom: none; }
+  .feat-row.rev { grid-template-columns: 1fr 220px; }
+  .feat-row.rev .fi { order: 2; }
+  .feat-row.rev .ft { order: 1; }
+  .fi { aspect-ratio: 4/3; overflow: hidden; background: #f2f2f2; border: 0.5px solid #e0e0e0; flex-shrink: 0; }
+  .fi img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .feat-row:hover .fi img { transform: scale(1.04); }
+  .ft .ft-lbl { font-size: 10px; letter-spacing: .1em; font-weight: 600; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .ft .new-badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    border: 0.5px solid #1a1a1a; padding: 2px 9px; margin-bottom: 8px;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  .ft h3 { font-size: 15px; font-weight: 500; margin-bottom: 9px; letter-spacing: -.01em; line-height: 1.35; }
+  .ft p { font-size: 12px; color: #888; line-height: 1.75; }
+
+  /* ── Persona ── */
+  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid #e0e0e0; }
+  .persona { padding: 18px; border-right: 0.5px solid #e0e0e0; border-bottom: 0.5px solid #e0e0e0; }
+  .persona:nth-child(2n) { border-right: none; }
+  .persona:nth-last-child(-n+2) { border-bottom: none; }
+  .persona i { font-size: 18px; color: #1a1a1a; display: block; margin-bottom: 10px; }
+  .persona-t { font-size: 13px; font-weight: 600; letter-spacing: .02em; margin-bottom: 5px; }
+  .persona-b { font-size: 12px; color: #888; line-height: 1.65; }
+
+  /* ── Compare ── */
+  .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 0.5px solid #e0e0e0; }
+  .cc { border-right: 0.5px solid #e0e0e0; overflow: hidden; }
+  .cc:last-child { border-right: none; }
+  .cc.on { outline: 1.5px solid #1a1a1a; outline-offset: -1px; }
+  .cc-img { aspect-ratio: 4/3; overflow: hidden; background: #f0f0f0; border-bottom: 0.5px solid #e0e0e0; }
+  .cc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .cc:hover .cc-img img { transform: scale(1.04); }
+  .cc-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .cc-img-placeholder i { font-size: 32px; color: #ccc; }
+  .cc-body { padding: 14px; }
+  .cc-type { font-size: 9px; letter-spacing: .09em; color: #888; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+  .cc-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .cc-now-tag { display: inline-block; font-size: 9px; background: #1a1a1a; color: #fff; padding: 2px 8px; letter-spacing: .04em; margin-bottom: 7px; }
+  .cc-price { font-size: 14px; font-weight: 500; margin-bottom: 7px; display: flex; align-items: baseline; gap: 6px; }
+  .cc-price s { font-size: 11px; color: #bbb; font-weight: 400; }
+  .cc-spec { font-size: 11px; color: #888; line-height: 1.65; margin-bottom: 10px; }
+  .cc-btn {
+    display: block; text-align: center; font-size: 10px; font-weight: 600;
+    letter-spacing: .05em; padding: 7px; border: 0.5px solid #1a1a1a;
+    cursor: pointer; text-transform: uppercase; text-decoration: none;
+    color: #1a1a1a; transition: background .15s;
+  }
+  .cc-btn:hover { background: #1a1a1a; color: #fff; }
+
+  /* ── Reviews ── */
+  .rev-sum { display: grid; grid-template-columns: 90px 1fr; gap: 20px; border: 0.5px solid #e0e0e0; padding: 18px; margin-bottom: 14px; }
+  .rev-score-col { text-align: center; border-right: 0.5px solid #e0e0e0; padding-right: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
+  .rev-score { font-size: 40px; font-weight: 500; letter-spacing: -.03em; line-height: 1; }
+  .rev-stars-big { font-size: 14px; letter-spacing: 1.5px; }
+  .rev-ct { font-size: 10px; color: #888; letter-spacing: .04em; text-transform: uppercase; margin-top: 2px; }
+  .rev-bars { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+  .rb-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #888; }
+  .rb-bg { flex: 1; height: 4px; background: #eee; }
+  .rb-fill { height: 100%; background: #1a1a1a; }
+  .rev-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rc { border: 0.5px solid #e0e0e0; padding: 15px; display: flex; flex-direction: column; gap: 8px; }
+  .rc img { width: 100%; aspect-ratio: 5/3; object-fit: cover; display: block; background: #f2f2f2; }
+  .rc-stars { font-size: 13px; letter-spacing: 1px; }
+  .rc-text { font-size: 12px; color: #888; line-height: 1.7; font-style: italic; }
+  .rc-auth { font-size: 12px; font-weight: 600; }
+  .rc-loc { font-size: 11px; color: #bbb; display: flex; align-items: center; gap: 4px; }
+  .rc-loc i { font-size: 12px; }
+  .rev-all {
+    display: block; text-align: center; font-size: 11px; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: 12px; border: 0.5px solid #1a1a1a; cursor: pointer; margin-top: 10px;
+    text-decoration: none; color: #1a1a1a; transition: background .15s;
+  }
+  .rev-all:hover { background: #1a1a1a; color: #fff; }
+
+  /* ── Specs table ── */
+  .specs-tbl { width: 100%; border-collapse: collapse; font-size: 12px; border: 0.5px solid #e0e0e0; }
+  .specs-tbl tr:nth-child(even) td { background: #f8f8f8; }
+  .specs-tbl td { padding: 10px 14px; border-bottom: 0.5px solid #e0e0e0; }
+  .specs-tbl tr:last-child td { border-bottom: none; }
+  .specs-tbl td:first-child {
+    font-weight: 600; width: 40%; letter-spacing: .03em;
+    border-right: 0.5px solid #e0e0e0; text-transform: uppercase;
+    font-size: 10px; color: #555;
+  }
+
+  /* ── FAQ ── */
+  .faq-wrap { display: flex; flex-direction: column; }
+  .fq { border-bottom: 0.5px solid #e8e8e8; }
+  .fq-q {
+    padding: 15px 0; font-size: 13px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; gap: 10px; letter-spacing: .02em; user-select: none;
+  }
+  .fq-q i { font-size: 14px; color: #aaa; transition: transform .2s; flex-shrink: 0; }
+  .fq-q:hover i { color: #1a1a1a; }
+  .fq-a { font-size: 12px; color: #888; line-height: 1.8; padding-bottom: 15px; display: none; }
+  .fq.open .fq-a { display: block; }
+  .fq.open .fq-q i { transform: rotate(45deg); }
+
+  /* ── Human CTA ── */
+  .human-cta {
+    background: #f5f5f5; padding: 32px;
+    display: grid; grid-template-columns: 68px 1fr;
+    gap: 22px; align-items: center; margin-top: 8px;
+  }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%; background: #1a1a1a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 500; color: #fff; flex-shrink: 0; letter-spacing: .02em;
+  }
+  .human-text h3 { font-size: 16px; font-weight: 500; margin-bottom: 6px; letter-spacing: -.01em; }
+  .human-text p { font-size: 12px; color: #888; margin-bottom: 14px; line-height: 1.75; }
+  .contact-row { display: flex; gap: 18px; flex-wrap: wrap; }
+  .contact-lnk {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: .03em;
+    text-decoration: underline; cursor: pointer; color: #1a1a1a;
+    transition: opacity .15s;
+  }
+  .contact-lnk:hover { opacity: .6; }
+  .contact-lnk i { font-size: 16px; }
+
+  /* ── Footer ── */
+  .footer {
+    background: #1a1a1a; color: #fff; padding: 32px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; margin-top: 48px; flex-wrap: wrap; gap: 10px;
+  }
+  .footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+  .footer a:hover { color: #fff; }
+  .footer-links { display: flex; gap: 20px; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .action-strip { grid-template-columns: repeat(3, 1fr); }
+    .feat-tiles { grid-template-columns: 1fr; }
+    .mat-grid { grid-template-columns: 1fr; }
+    .first-tent { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-grid .cc { border-right: none; border-bottom: 0.5px solid #e0e0e0; }
+    .feat-row { grid-template-columns: 1fr; }
+    .feat-row.rev { grid-template-columns: 1fr; }
+    .feat-row.rev .fi, .feat-row.rev .ft { order: unset; }
+    .pillars { grid-template-columns: 1fr 1fr; }
+    .pil:nth-child(2n) { border-right: none; }
+    .pil:nth-child(1), .pil:nth-child(2) { border-bottom: 0.5px solid #e0e0e0; }
+    .rev-cards { grid-template-columns: 1fr; }
+    .human-cta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <b>Start of Season Sale — Up to 100€ OFF!</b>
+  <i class="ti ti-hourglass" style="font-size:13px;opacity:.5"></i>
+  <span>Ends May 31st</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="https://snailer.eu/img/logo-17091319021.jpg" alt="SNAILER logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-size:15px;font-weight:700;letter-spacing:.06em">SNAILER®</span>
+  </div>
+  <div class="nav-links">
+    <a href="#">Rooftop Tents</a>
+    <a href="#">Accessories</a>
+    <a href="#">About us</a>
+    <a href="#">FAQ</a>
+    <a href="#">Blog</a>
+    <a href="#">Outlet</a>
+    <a href="#">Contact us</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-cart"><i class="ti ti-shopping-cart" style="font-size:18px"></i> 0</div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- Breadcrumb -->
+  <div class="bc-row">
+    <a href="#">Home</a><span class="bc-sep">/</span>
+    <a href="#">Rooftop Tents</a><span class="bc-sep">/</span>
+    <span style="color:#1a1a1a">Alduo</span>
+  </div>
+
+  <div class="page-tag"><i class="ti ti-tent"></i>HARDSHELL CLAMSHELL</div>
+
+  <!-- Hero -->
+  <div class="hero">
+
+    <!-- Gallery -->
+    <div class="gal">
+      <div class="gal-main">
+        <img id="main-img" src="https://snailer.eu/40-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo hardshell rooftop tent">
+      </div>
+      <div class="gal-thumbs">
+        <div class="gal-t on" onclick="setImg(this,'https://snailer.eu/40-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/40-large_default/snailer-alduo-rooftop-tent.jpg" alt="Front view"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/38-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/38-large_default/snailer-alduo-rooftop-tent.jpg" alt="Side view open"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/35-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/35-large_default/snailer-alduo-rooftop-tent.jpg" alt="Mattress interior"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/48-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/48-large_default/snailer-alduo-rooftop-tent.jpg" alt="LED light red mode"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/44-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/44-large_default/snailer-alduo-rooftop-tent.jpg" alt="Shoe bags ventilated"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/41-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/41-large_default/snailer-alduo-rooftop-tent.jpg" alt="Gas strut opening"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/42-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/42-large_default/snailer-alduo-rooftop-tent.jpg" alt="Aluminum honeycomb shell"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/47-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/47-large_default/snailer-alduo-rooftop-tent.jpg" alt="T-slot rails accessories"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/49-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/49-large_default/snailer-alduo-rooftop-tent.jpg" alt="Heater opening 2025"></div>
+        <div class="gal-t" onclick="setImg(this,'https://snailer.eu/50-large_default/snailer-alduo-rooftop-tent.jpg')"><img src="https://snailer.eu/50-large_default/snailer-alduo-rooftop-tent.jpg" alt="Interior storage net"></div>
+      </div>
+    </div>
+
+    <!-- Product info -->
+    <div class="info">
+      <div>
+        <div class="cat-lbl">SNAILER®</div>
+        <h1 class="prod-name">Alduo rooftop tent</h1>
+      </div>
+
+      <div class="rat-row">
+        <span class="stars">★★★★★</span>
+        <span class="rat-score">5.0</span>
+        <a href="#reviews" class="rat-ct">28 verified reviews</a>
+      </div>
+
+      <div class="pr-block">
+        <div class="pr-row">
+          <span class="pr-now">€1,790</span>
+          <span class="pr-was">€1,890</span>
+          <span class="pr-save">−€100</span>
+        </div>
+        <div class="wrnty-line">
+          <i class="ti ti-shield-check"></i>
+          Full 2-year warranty included
+        </div>
+      </div>
+
+      <p class="val-note">D2C direct — no retailer markup. Same tent, lower price. You deal with us directly.</p>
+
+      <div class="chips-row">
+        <span class="chip">30-sec setup</span>
+        <span class="chip">2 person</span>
+        <span class="chip">120 × 200 cm</span>
+        <span class="chip">All-aluminum shell</span>
+        <span class="chip">71 kg total</span>
+      </div>
+
+      <div class="trust-grid">
+        <div class="tr-cell"><i class="ti ti-shield-check"></i><div><span class="tr-t">Full warranty</span><span class="tr-s">Identical to any standard order</span></div></div>
+        <div class="tr-cell"><i class="ti ti-truck"></i><div><span class="tr-t">Free EU delivery</span><span class="tr-s">All 11 EU markets</span></div></div>
+        <div class="tr-cell"><i class="ti ti-star"></i><div><span class="tr-t">28 reviews · 5.0 ★</span><span class="tr-s">Verified purchases only</span></div></div>
+        <div class="tr-cell"><i class="ti ti-credit-card"></i><div><span class="tr-t">Card / SEPA</span><span class="tr-s">PayPal, Stripe, bank transfer</span></div></div>
+      </div>
+
+      <div>
+        <button class="cta-main">Add to cart — €1,790</button>
+        <button class="cta-sec">Download spec sheet (PDF)</button>
+      </div>
+
+      <div class="del-row">
+        <i class="ti ti-clock"></i>
+        Order today — ships within 2–3 business days
+      </div>
+
+      <div class="compat-box">
+        <i class="ti ti-tool"></i>
+        <span>Fits most vehicles with roof rails or crossbars — universal sliding brackets included. <a href="#">Check compatibility →</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- In Action -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Alduo in action</div>
+    <h2 class="sec-h">From the road — real owners, real trips</h2>
+    <p class="sec-sub">No studio shots. Submitted by customers across Europe.</p>
+    <div class="action-strip">
+      <div class="action-item">
+        <img src="https://snailer.eu/snailer-media/data/uploads/customer-gallery/snailer-alduo-land-rover-discovery-slovakia-02.webp" alt="SNAILER Alduo on Land Rover Discovery in Slovakia">
+        <div class="action-loc">Slovakia</div>
+      </div>
+      <div class="action-item">
+        <img src="https://snailer.eu/snailer-media/data/uploads/customer-gallery/snailer-alduo-toyota-rav4-italy.webp" alt="SNAILER Alduo on Toyota RAV4 in Italy">
+        <div class="action-loc">Italy</div>
+      </div>
+      <div class="action-item">
+        <img src="https://snailer.eu/snailer-media/data/uploads/customer-gallery/snailer-alduo-audi-q5-germany.webp" alt="SNAILER Alduo on Audi Q5 in Germany">
+        <div class="action-loc">Germany</div>
+      </div>
+      <div class="action-item">
+        <img src="https://snailer.eu/img/ets_reviews/r/jeeoeswojmzjqgpf3bts5fpjjrvaunxd-large.jpg" alt="SNAILER Alduo customer review photo outdoor">
+        <div class="action-loc">Verified buyer</div>
+      </div>
+      <div class="action-item action-more" onclick="window.open('https://snailer.eu/info/7-rooftop-tent-photo-gallery','_blank')">
+        <i class="ti ti-photo"></i>
+        <span>Full gallery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key feature tiles -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Key features</div>
+    <h2 class="sec-h">Four reasons the Alduo stands apart</h2>
+    <p class="sec-sub" style="margin-bottom:14px"></p>
+    <div class="feat-tiles">
+      <div class="ftile">
+        <img src="https://snailer.eu/41-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo 30 second setup gas struts">
+        <div class="ftile-overlay">
+          <div class="ftile-tag">Setup</div>
+          <div class="ftile-title">Open in 30 seconds — gas struts, one motion</div>
+        </div>
+      </div>
+      <div class="ftile">
+        <img src="https://snailer.eu/42-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo aerospace aluminum honeycomb shell">
+        <div class="ftile-overlay">
+          <div class="ftile-tag">Materials</div>
+          <div class="ftile-title">Aerospace aluminum honeycomb shell</div>
+        </div>
+      </div>
+      <div class="ftile">
+        <img src="https://snailer.eu/35-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo dual layer mattress 120x200cm">
+        <div class="ftile-overlay">
+          <div class="ftile-tag">Sleep quality</div>
+          <div class="ftile-title">World-first dual-layer mattress — 120 × 200 cm</div>
+        </div>
+      </div>
+      <div class="ftile">
+        <img src="https://snailer.eu/48-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo LED bug repelling red mode 2025 update">
+        <div class="ftile-overlay">
+          <div class="ftile-tag">New for 2025</div>
+          <div class="ftile-title">Bug-repelling LED mode + heater port</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materials -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Build quality</div>
+    <h2 class="sec-h">Material quality you can see and feel</h2>
+    <p class="sec-sub" style="margin-bottom:16px">No compromises on components. Every material tested in real conditions.</p>
+    <div class="mat-grid">
+      <div class="mat-cell">
+        <div class="mat-img"><img src="https://snailer.eu/43-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo aluminum honeycomb shell detail close-up"></div>
+        <div class="mat-body">
+          <div class="mat-name">Aluminum honeycomb shell</div>
+          <div class="mat-desc">Aerospace-grade structure — maximum rigidity at minimum weight. UV-stable, corrosion-proof, won't crack in frost or warp in heat.</div>
+        </div>
+      </div>
+      <div class="mat-cell">
+        <div class="mat-img"><img src="https://snailer.eu/36-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo Rip-Stop 420D Oxford fabric water resistance"></div>
+        <div class="mat-body">
+          <div class="mat-name">Rip-Stop 420D Oxford fabric</div>
+          <div class="mat-desc">Water resistance &gt;3 000 mm. Handles rain, UV exposure, and repeated folding without degrading over time.</div>
+        </div>
+      </div>
+      <div class="mat-cell">
+        <div class="mat-img"><img src="https://snailer.eu/37-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo dual layer foam mattress with anti-condensation mat"></div>
+        <div class="mat-body">
+          <div class="mat-name">Dual-layer foam mattress</div>
+          <div class="mat-desc">3.5 cm firm base + 3.5 cm soft top. Anti-condensation mat and waterproof bottom. Washable cover included.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillars -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="pillars">
+      <div class="pil"><i class="ti ti-bolt"></i><div class="pil-t">30-second setup</div><div class="pil-s">Gas struts, one smooth motion</div></div>
+      <div class="pil"><i class="ti ti-layers-difference"></i><div class="pil-t">All-aluminum shell</div><div class="pil-s">Honeycomb panel structure</div></div>
+      <div class="pil"><i class="ti ti-bed"></i><div class="pil-t">Dual-layer mattress</div><div class="pil-s">120 × 200 cm sleeping area</div></div>
+      <div class="pil"><i class="ti ti-map-2"></i><div class="pil-t">Free delivery</div><div class="pil-s">All 11 EU markets, always</div></div>
+    </div>
+  </div>
+
+  <!-- First tent? -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">New to rooftop tents?</div>
+    <h2 class="sec-h">Everything you need to know before you buy</h2>
+    <div class="first-tent">
+      <div class="ft-video" onclick="window.open('https://www.youtube.com/watch?v=fc0UMjrAqZk','_blank')">
+        <i class="ti ti-player-play"></i>
+        <span>Watch setup video</span>
+      </div>
+      <div class="ft-text">
+        <p>The Alduo mounts on any vehicle with roof rails or crossbars — no drilling. It opens in under 30 seconds using gas struts, closes in about a minute. The mattress is built-in, so you simply climb in and sleep. No ground prep, no poles to thread, no groundsheet.</p>
+        <p>First-time buyers typically ask about vehicle compatibility and roof load ratings. We're happy to answer both — just send us your make and model before ordering.</p>
+        <a href="https://snailer.eu/info/8-faq-rooftop-tents" target="_blank" class="ft-link">Read the full FAQ →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature alternating -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">In detail</div>
+    <h2 class="sec-h">Every feature, explained</h2>
+    <p class="sec-sub"></p>
+    <div class="feat-alt">
+
+      <div class="feat-row">
+        <div class="fi"><img src="https://snailer.eu/41-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo gas strut opening 30 second setup"></div>
+        <div class="ft">
+          <div class="ft-lbl">Setup</div>
+          <h3>Open in 30 seconds, close in under a minute</h3>
+          <p>Gas struts take the effort out of setup — one smooth motion and the tent is fully open. No poles, no clips, no fumbling in the dark. Folding is a comfortable one-person job. A rubber band keeps the fabric neatly tucked when closed.</p>
+        </div>
+      </div>
+
+      <div class="feat-row rev">
+        <div class="fi"><img src="https://snailer.eu/42-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo aerospace aluminum honeycomb shell close-up"></div>
+        <div class="ft">
+          <div class="ft-lbl">Materials</div>
+          <h3>Aerospace-grade aluminum honeycomb shell</h3>
+          <p>The same construction used in aviation: maximum strength at minimum weight. Resists dents, UV degradation, and corrosion. Won't crack in freezing temperatures, won't warp in summer heat. Outperforms fibreglass and ABS alternatives on all long-term durability metrics.</p>
+        </div>
+      </div>
+
+      <div class="feat-row">
+        <div class="fi"><img src="https://snailer.eu/35-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo dual-layer foam mattress 120x200cm anti-condensation"></div>
+        <div class="ft">
+          <div class="ft-lbl">Sleep quality</div>
+          <h3>World-first dual-layer mattress — 120 × 200 cm</h3>
+          <p>A 3.5 cm firm base layer for support combined with a 3.5 cm soft top layer for comfort. The anti-condensation mat and waterproof bottom layer keep you dry and comfortable regardless of temperature swings. Washable cover included.</p>
+        </div>
+      </div>
+
+      <div class="feat-row rev">
+        <div class="fi"><img src="https://snailer.eu/48-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo LED strip red bug-repelling mode 2025 new feature"></div>
+        <div class="ft">
+          <div class="new-badge">New for 2025</div>
+          <h3>Bug-repelling LED mode + external heater port</h3>
+          <p>The updated LED strip adds white, yellow, and red modes — red light attracts significantly fewer insects. A new circular heater port lets you connect an external heat source for cold-weather camping without compromising the tent's sealed structure.</p>
+        </div>
+      </div>
+
+      <div class="feat-row">
+        <div class="fi"><img src="https://snailer.eu/44-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo ventilated shoe bags and side storage pockets"></div>
+        <div class="ft">
+          <div class="ft-lbl">Organization</div>
+          <h3>Ventilated shoe bags, overhead net, side pockets</h3>
+          <p>External shoe bags keep boots outside the sleeping area, with mesh bottoms to prevent moisture buildup overnight. An overhead storage net handles bulky gear, side pockets organize smaller items, and the telescopic ladder stows inside when closed.</p>
+        </div>
+      </div>
+
+      <div class="feat-row rev">
+        <div class="fi"><img src="https://snailer.eu/47-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo T-slot rails for awning recovery boards accessories"></div>
+        <div class="ft">
+          <div class="ft-lbl">Expandable</div>
+          <h3>6 T-slot rails for accessories</h3>
+          <p>Three T-slots on each side accept standard accessories — awnings, recovery boards, shovels, and more. Universal hardware means you're not locked into any proprietary ecosystem.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Who is it for -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Who is it for</div>
+    <h2 class="sec-h">Four types of overlanders who choose the Alduo</h2>
+    <p class="sec-sub" style="margin-bottom:16px"></p>
+    <div class="persona-grid">
+      <div class="persona"><i class="ti ti-route"></i><div class="persona-t">Overlanding couples</div><div class="persona-b">Full 120 × 200 cm sleeping area — enough for two adults with gear stored below. Sub-30-second setup means pitching in the dark without frustration.</div></div>
+      <div class="persona"><i class="ti ti-calendar-week"></i><div class="persona-t">Weekend adventurers</div><div class="persona-b">Drive, park, open in 30 seconds. The 17.5 cm closed height means it stays on the car all week without affecting daily driving.</div></div>
+      <div class="persona"><i class="ti ti-user"></i><div class="persona-t">Solo travellers</div><div class="persona-b">A full 2-person tent for one gives room for gear, a laptop area, or simply the luxury of spreading out after a long drive.</div></div>
+      <div class="persona"><i class="ti ti-snowflake"></i><div class="persona-t">Cold-weather campers</div><div class="persona-b">Dual-layer mattress, anti-condensation mat, and the new heater port make 4-season use genuinely practical.</div></div>
+    </div>
+  </div>
+
+  <!-- Model comparison -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Model comparison</div>
+    <h2 class="sec-h">Find the right SNAILER tent for you</h2>
+    <p class="sec-sub" style="margin-bottom:16px">All three models share the same build quality and 2-year warranty.</p>
+    <div class="compare-grid">
+      <div class="cc on">
+        <div class="cc-img"><img src="https://snailer.eu/40-large_default/snailer-alduo-rooftop-tent.jpg" alt="SNAILER Alduo rooftop tent"></div>
+        <div class="cc-body">
+          <div class="cc-type">Hardshell Clamshell</div>
+          <div class="cc-name">Alduo</div>
+          <span class="cc-now-tag">Viewing now</span>
+          <div class="cc-price">€1,790 <s>€1,890</s></div>
+          <div class="cc-spec">1–2 people · Aluminum shell · 30-sec setup · 71 kg · 17.5 cm profile when closed</div>
+          <div class="cc-btn">You are here</div>
+        </div>
+      </div>
+      <div class="cc">
+        <div class="cc-img"><div class="cc-img-placeholder"><i class="ti ti-tent"></i></div></div>
+        <div class="cc-body">
+          <div class="cc-type">Hardshell Side-opening</div>
+          <div class="cc-name">Abis</div>
+          <div style="margin-bottom:7px"></div>
+          <div class="cc-price">€1,840 <s>€1,890</s></div>
+          <div class="cc-spec">2–3 people · ABS hard shell · Side-opening · 67 kg · More interior width when open</div>
+          <a href="https://snailer.eu/roof-tents/2-snailer-abis-rooftop-tent.html" class="cc-btn" target="_blank">View Abis →</a>
+        </div>
+      </div>
+      <div class="cc">
+        <div class="cc-img"><div class="cc-img-placeholder"><i class="ti ti-tent"></i></div></div>
+        <div class="cc-body">
+          <div class="cc-type">Hardshell Side-opening XL</div>
+          <div class="cc-name">Abis MAX</div>
+          <div style="margin-bottom:7px"></div>
+          <div class="cc-price">€1,940 <s>€1,990</s></div>
+          <div class="cc-spec">2 adults + 2 kids · 174 × 196 cm mattress · 74 kg</div>
+          <a href="https://snailer.eu/roof-tents/5-snailer-abis-max-rooftop-tent.html" class="cc-btn" target="_blank">View Abis MAX →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="div" id="reviews"></div>
+  <div class="sec">
+    <div class="lbl">Reviews</div>
+    <h2 class="sec-h">What customers say</h2>
+    <p class="sec-sub">28 verified purchases. Every review is from a real buyer.</p>
+    <div class="rev-sum">
+      <div class="rev-score-col">
+        <div class="rev-score">5.0</div>
+        <div class="rev-stars-big">★★★★★</div>
+        <div class="rev-ct">28 reviews</div>
+      </div>
+      <div class="rev-bars">
+        <div class="rb-row">5 ★<div class="rb-bg"><div class="rb-fill" style="width:100%"></div></div>28</div>
+        <div class="rb-row">4 ★<div class="rb-bg"><div class="rb-fill" style="width:0%"></div></div>0</div>
+        <div class="rb-row">3 ★<div class="rb-bg"><div class="rb-fill" style="width:0%"></div></div>0</div>
+        <div class="rb-row">2 ★<div class="rb-bg"><div class="rb-fill" style="width:0%"></div></div>0</div>
+        <div class="rb-row">1 ★<div class="rb-bg"><div class="rb-fill" style="width:0%"></div></div>0</div>
+      </div>
+    </div>
+    <div class="rev-cards">
+      <div class="rc">
+        <img src="https://snailer.eu/img/ets_reviews/r/jeeoeswojmzjqgpf3bts5fpjjrvaunxd-large.jpg" alt="Customer review photo SNAILER Alduo outdoor">
+        <div class="rc-stars">★★★★★</div>
+        <div class="rc-text">"Setup really does take 30 seconds. Drove all day, parked at a forest, opened it in the rain. Best purchase I've made for travelling."</div>
+        <div class="rc-auth">Martin K.</div>
+        <div class="rc-loc"><i class="ti ti-map-pin"></i>Czech Republic</div>
+      </div>
+      <div class="rc">
+        <img src="https://snailer.eu/img/ets_reviews/r/9uguehwrqk17x5r6wvzqsw5u4ecqi9zv-large.jpg" alt="Customer review photo SNAILER Alduo installed on car">
+        <div class="rc-stars">★★★★★</div>
+        <div class="rc-text">"Build quality is exceptional. Solid shell, no rattles at highway speed. The mattress is genuinely comfortable — better than I expected at this price."</div>
+        <div class="rc-auth">Thomas B.</div>
+        <div class="rc-loc"><i class="ti ti-map-pin"></i>Germany</div>
+      </div>
+    </div>
+    <a href="https://snailer.eu/roof-tents/1-snailer-alduo-rooftop-tent.html#ets-rv-product-comments-list-header" class="rev-all" target="_blank">View all 28 reviews with photos →</a>
+  </div>
+
+  <!-- Specs -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">Specifications</div>
+    <h2 class="sec-h">Technical specifications</h2>
+    <p class="sec-sub" style="margin-bottom:16px">Everything you need to confirm compatibility before ordering.</p>
+    <table class="specs-tbl">
+      <tr><td>Shell material</td><td>Aluminum honeycomb panels</td></tr>
+      <tr><td>Outer fabric</td><td>Rip-Stop Polyester 420D Oxford, &gt;3 000 mm water resistance</td></tr>
+      <tr><td>Mattress</td><td>Dual-layer 6.5 cm high-density foam (3.5 cm firm base + 3.5 cm soft top), washable cover</td></tr>
+      <tr><td>Sleeping area</td><td>120 × 200 cm</td></tr>
+      <tr><td>Closed dimensions</td><td>210 × 130 × 17.5 cm (+2.5 cm mounting rails)</td></tr>
+      <tr><td>Total weight</td><td>71 kg (incl. ladder, mattress, anti-condensation mat, installation hardware)</td></tr>
+      <tr><td>Ladder</td><td>Telescopic aluminum, max length 230 cm, max weight capacity 150 kg, ladder weight 6 kg</td></tr>
+      <tr><td>Mounting</td><td>Universal aluminum base rails + sliding brackets + M8 bolts</td></tr>
+      <tr><td>Lighting</td><td>USB LED strip — white / yellow / red modes, dimmable via +/− buttons</td></tr>
+      <tr><td>Accessory slots</td><td>3× T-slots per side (6 total)</td></tr>
+      <tr><td>Warranty</td><td>2 years</td></tr>
+    </table>
+  </div>
+
+  <!-- FAQ -->
+  <div class="div"></div>
+  <div class="sec">
+    <div class="lbl">FAQ</div>
+    <h2 class="sec-h">Frequently asked questions</h2>
+    <p class="sec-sub" style="margin-bottom:16px"></p>
+    <div class="faq-wrap">
+      <div class="fq open">
+        <div class="fq-q" onclick="tFaq(this)">Will the Alduo fit my vehicle?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">The Alduo fits most vehicles with roof rails or crossbars rated for at least 75 kg dynamic load. The mounting base is 210 × 130 cm with universal sliding brackets — compatible with Thule, Rhino-Rack, Yakima, ARB, and similar systems. No drilling required for most setups. Send us your vehicle make and model if you're unsure before ordering.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">How long does setup really take?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">Under 30 seconds to fully open — the gas struts do the work. Folding takes 1–2 minutes and is a comfortable one-person job. A rubber band helps tuck the fabric inside cleanly. Watch the setup video on this page to see a real-world demo — not a sped-up marketing version.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">Can I leave the tent on my car year-round?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">Yes. The aluminum honeycomb shell is corrosion-resistant and UV-stable, designed for permanent mounting. The closed height adds approximately 20 cm to your vehicle height — keep this in mind for underground parking with low-clearance restrictions.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">Is the Alduo suitable for winter camping?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">Yes. The dual-layer mattress and anti-condensation pad provide solid insulation from below. The 2025 model adds a heater port for connecting an external heat source. Pair it with a sleeping bag rated for your expected temperatures and you have a genuinely 4-season setup.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">What is the maximum weight the tent can hold?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">The tent itself is rated for normal sleeping use by two adults. The limiting factor is your vehicle's roof dynamic load rating — typically 75–100 kg on most vehicles. The tent weighs 71 kg, leaving roughly 30–50 kg for occupants depending on your vehicle. Always check your vehicle manufacturer's specifications.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">How does the Alduo compare to soft-shell alternatives?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">Key advantages: (1) 30-second setup vs. 3–8 minutes for most soft-shells. (2) 17.5 cm closed height — lower aerodynamic drag and less clearance impact. (3) Aluminum doesn't degrade in UV the way canvas does over years. Trade-off: fixed footprint and at 71 kg it's heavier than most soft-shells (typically 45–60 kg).</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q" onclick="tFaq(this)">What is the return policy?<i class="ti ti-plus"></i></div>
+        <div class="fq-a">Standard 14-day return right under EU consumer law. The tent must be unused and in original condition. We strongly recommend contacting us to confirm vehicle compatibility before ordering — we're happy to answer fitment questions at info@snailer.eu or +421 917 449 907.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Human CTA -->
+  <div class="div"></div>
+  <div class="sec" style="padding-bottom:0">
+    <div class="human-cta">
+      <div class="avatar">MK</div>
+      <div class="human-text">
+        <h3>Questions before you buy?</h3>
+        <p>We're a small D2C team based in Slovakia — every question gets a real answer from a real person, usually within a few hours on business days. No bots, no generic support lines. We know every tent we sell.</p>
+        <div class="contact-row">
+          <a href="mailto:info@snailer.eu" class="contact-lnk"><i class="ti ti-mail"></i>info@snailer.eu</a>
+          <a href="tel:+421917449907" class="contact-lnk"><i class="ti ti-phone"></i>+421 917 449 907</a>
+          <a href="https://snailer.eu/manuals/manual-snailer-alduo-en.pdf" class="contact-lnk" target="_blank"><i class="ti ti-file-description"></i>Installation manual</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div>© 2025 SNAILER® / WANKEL, s.r.o. — All rights reserved</div>
+  <div class="footer-links">
+    <a href="#">Delivery</a>
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">About us</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function setImg(el, src) {
+    document.getElementById('main-img').src = src;
+    document.querySelectorAll('.gal-t').forEach(t => t.classList.remove('on'));
+    el.classList.add('on');
+  }
+  function tFaq(el) {
+    var item = el.parentNode;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.fq').forEach(f => f.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
