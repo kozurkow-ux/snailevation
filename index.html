@@ -183,9 +183,194 @@
     font-size: 13px;
   }
 
+  .vote-wrap {
+    margin: 0 24px 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(160deg, #fffdf8 0%, #f2fbf6 100%);
+    padding: 20px;
+  }
+
+  .vote-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .vote-title {
+    font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .vote-sub {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .race-badge {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px dashed rgba(15, 28, 45, 0.35);
+    border-radius: 999px;
+    padding: 6px 10px;
+    white-space: nowrap;
+    animation: wiggle 2.8s ease-in-out infinite;
+  }
+
+  .vote-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .vote-btn {
+    border: 1px solid rgba(15, 28, 45, 0.18);
+    border-radius: 14px;
+    background: #fff;
+    padding: 14px;
+    text-align: left;
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .vote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 23, 34, 0.1);
+    border-color: rgba(15, 28, 45, 0.35);
+  }
+
+  .vote-btn strong {
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .vote-btn span {
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .vote-btn em {
+    font-size: 12px;
+    color: #1f6a46;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .vote-btn.selected {
+    border-color: #0f1c2d;
+    box-shadow: 0 0 0 2px rgba(15, 28, 45, 0.1) inset;
+  }
+
+  .vote-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  .board {
+    border: 1px solid rgba(15, 28, 45, 0.12);
+    border-radius: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .board-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 96px;
+    align-items: center;
+    gap: 10px;
+    margin: 7px 0;
+  }
+
+  .board-row b {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .meter {
+    height: 10px;
+    border-radius: 999px;
+    background: #e6ebf0;
+    overflow: hidden;
+  }
+
+  .fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    transition: width 0.45s ease;
+  }
+
+  .fill-v1 {
+    background: linear-gradient(90deg, #efc998 0%, #f6ddbb 100%);
+  }
+
+  .fill-v2 {
+    background: linear-gradient(90deg, #6ec79b 0%, #9ddfbf 100%);
+  }
+
+  .board-row small {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .vote-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .vote-status {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f6a46;
+    min-height: 20px;
+  }
+
+  @keyframes wiggle {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-1deg);
+    }
+    75% {
+      transform: rotate(1deg);
+    }
+  }
+
   @media (max-width: 860px) {
     .grid {
       grid-template-columns: 1fr;
+    }
+
+    .vote-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .board-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .board-row small {
+      text-align: left;
     }
 
     .hero {
@@ -207,7 +392,7 @@
     <section class="hero">
       <span class="badge">Snailevation Preview Hub</span>
       <h1>Vyberte verziu mockupu pred otvorenim stranky</h1>
-      <p class="sub">Toto je spolocny rozcestnik pre klienta a tim. Staci jeden link, kde sa najprv rozhodnu, ci chcu pozriet povodnu verziu alebo novu redizajnovu iteraciu.</p>
+      <p class="sub">Toto je spolocny rozcestnik mojich mockupov :D.</p>
     </section>
 
     <section class="grid">
@@ -218,7 +403,7 @@
         <div class="card-copy">
           <span class="kicker">Mockup verzia 1</span>
           <h2>Povodna verzia</h2>
-          <p>Prvy navrh produktovej stranky, vhodny ako referencny bod pre porovnanie dizajnu a obsahu.</p>
+          <p>Prvy navrh produktovej stranky.</p>
           <div class="spacer"></div>
           <a class="btn" href="alduo_product_page_mockup.html">Otvorit verziu 1</a>
         </div>
@@ -230,15 +415,185 @@
         </div>
         <div class="card-copy">
           <span class="kicker">Mockup verzia 2</span>
-          <h2>Redesign v8</h2>
-          <p>Nova iteracia s vyraznejsim storytellingom, aktualizovanym layotom a silnejsimi call-to-action blokmi.</p>
+          <h2>Verzia 2</h2>
+          <p>Druha verzia mockupu.</p>
           <div class="spacer"></div>
           <a class="btn" href="snailer_alduo_redesign_8.html">Otvorit verziu 2</a>
         </div>
       </article>
     </section>
 
+    <section class="vote-wrap" aria-labelledby="vote-title">
+      <div class="vote-head">
+        <div>
+          <h2 id="vote-title" class="vote-title">Slimaci duel mockupov</h2>
+          <p class="vote-sub">Kazdy kolega moze dat 1 hlas: povodna klasika alebo nova verzia. Ktory slimak dorazi do ciela prvy?</p>
+        </div>
+        <span class="race-badge">Race mode on</span>
+      </div>
+
+      <div class="vote-grid">
+        <button class="vote-btn" id="vote-v1" type="button">
+          <strong>Hlasujem za verziu 1</strong>
+          <span>Klasicka povodna verzia</span>
+          <em>Team Classic</em>
+        </button>
+
+        <button class="vote-btn" id="vote-v2" type="button">
+          <strong>Hlasujem za verziu 2</strong>
+          <span>Nova iteracia a redesign</span>
+          <em>Team Turbo Snail</em>
+        </button>
+      </div>
+
+      <div class="board" role="status" aria-live="polite">
+        <div class="board-row">
+          <b>Verzia 1</b>
+          <div class="meter"><div class="fill fill-v1" id="fill-v1"></div></div>
+          <small id="score-v1">0 hlasov</small>
+        </div>
+        <div class="board-row">
+          <b>Verzia 2</b>
+          <div class="meter"><div class="fill fill-v2" id="fill-v2"></div></div>
+          <small id="score-v2">0 hlasov</small>
+        </div>
+      </div>
+
+      <p class="vote-status" id="vote-status"></p>
+      <p class="vote-note">Poznamka: Stranka si pamata tvoj hlas v tomto prehliadaci. Celkovy pocet hlasov je spolocny pre vsetkych navstevnikov.</p>
+    </section>
+
     <p class="footer">Tip: tento rozcestnik je vhodny ako hlavny link na zdielanie.</p>
   </main>
+
+  <script>
+    const voteButtons = {
+      v1: document.getElementById("vote-v1"),
+      v2: document.getElementById("vote-v2")
+    };
+
+    const voteEls = {
+      fillV1: document.getElementById("fill-v1"),
+      fillV2: document.getElementById("fill-v2"),
+      scoreV1: document.getElementById("score-v1"),
+      scoreV2: document.getElementById("score-v2"),
+      status: document.getElementById("vote-status")
+    };
+
+    const voteConfig = {
+      namespace: "snailevation-mockup-duel",
+      localVoteKey: "snailevation_user_vote",
+      localBackupKey: "snailevation_local_vote_counts"
+    };
+
+    function readLocalBackup() {
+      const backupRaw = localStorage.getItem(voteConfig.localBackupKey);
+      if (!backupRaw) {
+        return { v1: 0, v2: 0 };
+      }
+
+      try {
+        const parsed = JSON.parse(backupRaw);
+        return {
+          v1: Number(parsed.v1) || 0,
+          v2: Number(parsed.v2) || 0
+        };
+      } catch {
+        return { v1: 0, v2: 0 };
+      }
+    }
+
+    function writeLocalBackup(counts) {
+      localStorage.setItem(voteConfig.localBackupKey, JSON.stringify(counts));
+    }
+
+    async function getRemoteCount(key) {
+      const response = await fetch(`https://api.countapi.xyz/get/${voteConfig.namespace}/${key}`);
+      const data = await response.json();
+      return Number(data.value) || 0;
+    }
+
+    async function incrementRemoteCount(key) {
+      const response = await fetch(`https://api.countapi.xyz/hit/${voteConfig.namespace}/${key}`);
+      const data = await response.json();
+      return Number(data.value) || 0;
+    }
+
+    function renderCounts(counts) {
+      const total = counts.v1 + counts.v2;
+      const pctV1 = total ? Math.round((counts.v1 / total) * 100) : 50;
+      const pctV2 = total ? 100 - pctV1 : 50;
+
+      voteEls.fillV1.style.width = `${pctV1}%`;
+      voteEls.fillV2.style.width = `${pctV2}%`;
+      voteEls.scoreV1.textContent = `${counts.v1} hlasov (${pctV1}%)`;
+      voteEls.scoreV2.textContent = `${counts.v2} hlasov (${pctV2}%)`;
+    }
+
+    function applyUserVoteState() {
+      const selected = localStorage.getItem(voteConfig.localVoteKey);
+
+      voteButtons.v1.classList.toggle("selected", selected === "v1");
+      voteButtons.v2.classList.toggle("selected", selected === "v2");
+
+      if (selected) {
+        voteButtons.v1.disabled = true;
+        voteButtons.v2.disabled = true;
+        voteEls.status.textContent = `Tvoj hlas je zapisany pre ${selected === "v1" ? "verziu 1" : "verziu 2"}. Dakujeme!`;
+      }
+    }
+
+    async function loadCounts() {
+      const backup = readLocalBackup();
+
+      try {
+        const [v1, v2] = await Promise.all([
+          getRemoteCount("v1"),
+          getRemoteCount("v2")
+        ]);
+        const counts = { v1, v2 };
+        writeLocalBackup(counts);
+        renderCounts(counts);
+      } catch {
+        renderCounts(backup);
+      }
+    }
+
+    async function voteFor(version) {
+      const existing = localStorage.getItem(voteConfig.localVoteKey);
+      if (existing) {
+        applyUserVoteState();
+        return;
+      }
+
+      voteButtons.v1.disabled = true;
+      voteButtons.v2.disabled = true;
+      voteEls.status.textContent = "Zapisujem hlas do slimacieho preteku...";
+
+      const backup = readLocalBackup();
+
+      try {
+        await incrementRemoteCount(version);
+
+        localStorage.setItem(voteConfig.localVoteKey, version);
+        voteEls.status.textContent = `Hlas uspesne zapisany. Team ${version === "v1" ? "Classic" : "Turbo Snail"} sa raduje.`;
+        applyUserVoteState();
+        await loadCounts();
+      } catch {
+        backup[version] += 1;
+        writeLocalBackup(backup);
+        localStorage.setItem(voteConfig.localVoteKey, version);
+        voteEls.status.textContent = "Hlas ulozeny lokalne (offline rezim).";
+        applyUserVoteState();
+        renderCounts(backup);
+      }
+    }
+
+    voteButtons.v1.addEventListener("click", () => voteFor("v1"));
+    voteButtons.v2.addEventListener("click", () => voteFor("v2"));
+
+    applyUserVoteState();
+    loadCounts();
+  </script>
 </body>
 </html>
