@@ -502,7 +502,9 @@
       namespace: "snailevation-mockup-duel",
       localVoteKey: "snailevation_user_vote",
       localBackupKey: "snailevation_local_vote_counts",
-      hosts: ["https://countapi.xyz", "https://api.countapi.xyz"]
+      remoteCacheKey: "snailevation_remote_vote_counts",
+      hosts: ["https://api.countapi.xyz", "https://countapi.xyz"],
+      requestTimeoutMs: 1200
     };
 
     function readLocalBackup() {
@@ -526,12 +528,48 @@
       localStorage.setItem(voteConfig.localBackupKey, JSON.stringify(counts));
     }
 
+    function readRemoteCache() {
+      const cachedRaw = localStorage.getItem(voteConfig.remoteCacheKey);
+      if (!cachedRaw) {
+        return null;
+      }
+
+      try {
+        const parsed = JSON.parse(cachedRaw);
+        return {
+          v1: Number(parsed.v1) || 0,
+          v2: Number(parsed.v2) || 0
+        };
+      } catch {
+        return null;
+      }
+    }
+
+    function writeRemoteCache(counts) {
+      localStorage.setItem(voteConfig.remoteCacheKey, JSON.stringify(counts));
+    }
+
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+      try {
+        const response = await fetch(url, {
+          cache: "no-store",
+          signal: controller.signal
+        });
+        return response;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+
     async function fetchCountApi(path) {
       let lastError = null;
 
       for (const host of voteConfig.hosts) {
         try {
-          const response = await fetch(`${host}${path}`, { cache: "no-store" });
+          const response = await fetchWithTimeout(`${host}${path}`, voteConfig.requestTimeoutMs);
 
           if (!response.ok) {
             if (response.status === 404) {
@@ -586,6 +624,10 @@
 
     async function loadCounts() {
       const backup = readLocalBackup();
+      const remoteCache = readRemoteCache();
+      const initialCounts = remoteCache || backup;
+
+      renderCounts(initialCounts);
 
       try {
         const [v1, v2] = await Promise.all([
@@ -593,10 +635,11 @@
           getRemoteCount("v2")
         ]);
         const counts = { v1, v2 };
+        writeRemoteCache(counts);
         writeLocalBackup(counts);
         renderCounts(counts);
       } catch {
-        renderCounts(backup);
+        voteEls.status.textContent = "Globalne vysledky su docasne nedostupne, zobrazuju sa lokalne data.";
       }
     }
 
@@ -609,24 +652,28 @@
 
       voteButtons.v1.disabled = true;
       voteButtons.v2.disabled = true;
-      voteEls.status.textContent = "Zapisujem hlas do slimacieho preteku...";
+      voteEls.status.textContent = "Hlasujem...";
 
-      const backup = readLocalBackup();
+      const optimistic = readRemoteCache() || readLocalBackup();
+      optimistic[version] += 1;
+      writeLocalBackup(optimistic);
+      renderCounts(optimistic);
+      localStorage.setItem(voteConfig.localVoteKey, version);
+      applyUserVoteState();
 
       try {
         await incrementRemoteCount(version);
-
-        localStorage.setItem(voteConfig.localVoteKey, version);
+        const [v1, v2] = await Promise.all([
+          getRemoteCount("v1"),
+          getRemoteCount("v2")
+        ]);
+        const counts = { v1, v2 };
+        writeRemoteCache(counts);
+        writeLocalBackup(counts);
+        renderCounts(counts);
         voteEls.status.textContent = `Hlas uspesne zapisany. Team ${version === "v1" ? "Classic" : "Turbo Snail"} sa raduje.`;
-        applyUserVoteState();
-        await loadCounts();
       } catch {
-        backup[version] += 1;
-        writeLocalBackup(backup);
-        localStorage.setItem(voteConfig.localVoteKey, version);
-        voteEls.status.textContent = "Hlas ulozeny lokalne (offline rezim).";
-        applyUserVoteState();
-        renderCounts(backup);
+        voteEls.status.textContent = "Hlas ulozeny lokalne. Globalny server teraz neodpoveda.";
       }
     }
 
