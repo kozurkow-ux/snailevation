@@ -501,7 +501,8 @@
     const voteConfig = {
       namespace: "snailevation-mockup-duel",
       localVoteKey: "snailevation_user_vote",
-      localBackupKey: "snailevation_local_vote_counts"
+      localBackupKey: "snailevation_local_vote_counts",
+      hosts: ["https://countapi.xyz", "https://api.countapi.xyz"]
     };
 
     function readLocalBackup() {
@@ -525,15 +526,37 @@
       localStorage.setItem(voteConfig.localBackupKey, JSON.stringify(counts));
     }
 
+    async function fetchCountApi(path) {
+      let lastError = null;
+
+      for (const host of voteConfig.hosts) {
+        try {
+          const response = await fetch(`${host}${path}`, { cache: "no-store" });
+
+          if (!response.ok) {
+            if (response.status === 404) {
+              return { value: 0 };
+            }
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+
+      throw lastError || new Error("Count API unavailable");
+    }
+
     async function getRemoteCount(key) {
-      const response = await fetch(`https://api.countapi.xyz/get/${voteConfig.namespace}/${key}`);
-      const data = await response.json();
+      const data = await fetchCountApi(`/get/${voteConfig.namespace}/${key}`);
       return Number(data.value) || 0;
     }
 
     async function incrementRemoteCount(key) {
-      const response = await fetch(`https://api.countapi.xyz/hit/${voteConfig.namespace}/${key}`);
-      const data = await response.json();
+      const data = await fetchCountApi(`/hit/${voteConfig.namespace}/${key}`);
       return Number(data.value) || 0;
     }
 
